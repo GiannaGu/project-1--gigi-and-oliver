@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-# Ollie Sprint Tasks 
+
 const SPEED = 150.0
 const JUMP_VELOCITY = -300.0
 
