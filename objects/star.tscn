@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://yms2dvql8pxh"]
+
+[ext_resource type="Texture2D" uid="uid://b42v67yig383n" path="res://assets/star.png" id="1_71lim"]
+[ext_resource type="Script" path="res://objects/star.gd" id="1_wlxkn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_snu01"]
+radius = 109.371
+
+[node name="star" type="Area2D"]
+scale = Vector2(0.05, 0.05)
+script = ExtResource("1_wlxkn")
+
+[node name="Star" type="Sprite2D" parent="."]
+position = Vector2(-2, -3)
+texture = ExtResource("1_71lim")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_snu01")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
