@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3se1lah02vp2"]
+
+[ext_resource type="Script" path="res://Scenes/menu.gd" id="1_168pp"]
+[ext_resource type="Texture2D" uid="uid://cgicabreqgja8" path="res://Assets/Oliver-Gigi-GameFiles/Untitled (1).png" id="2_qohrs"]
+[ext_resource type="Shader" path="res://Scenes/menu.gdshader" id="3_nje6r"]
+[ext_resource type="Texture2D" uid="uid://4u6w4vp3mo4v" path="res://Assets/Oliver-Gigi-GameFiles/New Piskel-2.png (1).png" id="4_86pau"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1wus5"]
+shader = ExtResource("3_nje6r")
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_168pp")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+z_index = -1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_1wus5")
+layout_mode = 2
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 1153.0
+offset_bottom = 639.0
+texture = ExtResource("4_86pau")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 0
+offset_right = 1148.0
+offset_bottom = 643.0
+texture = ExtResource("2_qohrs")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 200.0
+offset_right = 542.0
+offset_bottom = 266.0
+scale = Vector2(3, 3)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Player" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Characters"
+
+[node name="quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Player" to="." method="_on_player_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/quit" to="." method="_on_quit_pressed"]

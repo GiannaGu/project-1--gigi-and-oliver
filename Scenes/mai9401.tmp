@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bh8wsane7x3hm"]
+
+[ext_resource type="PackedScene" uid="uid://ygh6gkyc1i3x" path="res://Scenes/tile_map.tscn" id="1_pj0kx"]
+[ext_resource type="PackedScene" uid="uid://qwuuim5berbc" path="res://Scenes/Bakery_body.tscn" id="2_67jme"]
+
+[node name="Main Scene" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_pj0kx")]
+position = Vector2(-73, 36)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_67jme")]
+position = Vector2(-2, 3)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(2, -3)
+zoom = Vector2(2, 2)

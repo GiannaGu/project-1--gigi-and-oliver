@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7ba2ed8if7mj"]
+
+[ext_resource type="PackedScene" uid="uid://ygh6gkyc1i3x" path="res://Scenes/tile_map.tscn" id="1_j07vd"]
+[ext_resource type="PackedScene" uid="uid://qwuuim5berbc" path="res://Scenes/Bakery_body.tscn" id="2_2jbgc"]
+[ext_resource type="Texture2D" uid="uid://c3pxmns3eif7k" path="res://Assets/Oliver-Gigi-GameFiles/Untitled.png" id="3_ejl5h"]
+[ext_resource type="Shader" path="res://Scenes/scroll.gdshader" id="4_53j5a"]
+[ext_resource type="Texture2D" uid="uid://4u6w4vp3mo4v" path="res://Assets/Oliver-Gigi-GameFiles/New Piskel-2.png (1).png" id="5_7kafb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b2tdu"]
+shader = ExtResource("4_53j5a")
+
+[node name="Game" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_j07vd")]
+position = Vector2(-73, 36)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_2jbgc")]
+position = Vector2(-2, 3)
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+position = Vector2(2, -3)
+offset = Vector2(0, -50)
+zoom = Vector2(2, 2)
+
+[node name="TextureRect" type="TextureRect" parent="CharacterBody2D/Camera2D"]
+z_index = -1
+offset_left = -291.0
+offset_top = -215.0
+offset_right = 293.0
+offset_bottom = 118.0
+texture = ExtResource("3_ejl5h")
+expand_mode = 1
+flip_h = true
+
+[node name="TextureRect2" type="TextureRect" parent="CharacterBody2D/Camera2D"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_b2tdu")
+offset_left = -287.0
+offset_top = -276.0
+offset_right = 296.0
+offset_bottom = -62.0
+texture = ExtResource("5_7kafb")
+expand_mode = 1

@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://qwuuim5berbc"]
+
+[ext_resource type="Script" path="res://Scenes/bakery_body.gd" id="1_7v2pa"]
+[ext_resource type="Texture2D" uid="uid://bgduelu8m2hl7" path="res://Assets/Oliver-Gigi-GameFiles/Characters/Bakery Sprite Sheet.png" id="1_l4fkx"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tgv4h"]
+height = 58.0
+
+[sub_resource type="Animation" id="Animation_4481y"]
+resource_name = "Left Animation"
+length = 1.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333, 0.866667, 1.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 5, 8]
+}
+
+[sub_resource type="Animation" id="Animation_lsri0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_yoqif"]
+resource_name = "new_animation"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 3, 1, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_576jb"]
+_data = {
+"Left Animation": SubResource("Animation_4481y"),
+"RESET": SubResource("Animation_lsri0"),
+"right animation": SubResource("Animation_yoqif")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_7v2pa")
+
+[node name="BakerySpriteSheet" type="Sprite2D" parent="."]
+position = Vector2(-1, -1)
+texture = ExtResource("1_l4fkx")
+hframes = 3
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_tgv4h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../BakerySpriteSheet")
+libraries = {
+"": SubResource("AnimationLibrary_576jb")
+}
+speed_scale = 1.5
